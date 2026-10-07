@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>د. حمداد هشام | طبيب عام</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Tahoma", Arial, sans-serif;
+    }
+
+    body {
+      background: #f3f8fa;
+      color: #18343b;
+    }
+
+    header {
+      background: linear-gradient(135deg, #087f8c, #16a6a0);
+      color: white;
+      padding: 35px 20px;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+    }
+
+    .doctor-icon {
+      width: 90px;
+      height: 90px;
+      background: white;
+      color: #087f8c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      font-size: 45px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    }
+
+    header h1 {
+      margin-top: 15px;
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 8px;
+      opacity: .9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px 18px 100px;
+    }
+
+    .welcome {
+      background: white;
+      padding: 22px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.06);
+      text-align: center;
+    }
+
+    .welcome h2 {
+      color: #087f8c;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      padding: 20px 10px;
+      border-radius: 18px;
+      background: white;
+      color: #18343b;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 5px 16px rgba(0,0,0,.07);
+      transition: .2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 22px rgba(0,0,0,.12);
+    }
+
+    button:active {
+      transform: scale(.96);
+    }
+
+    .icon {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .primary {
+      background: #087f8c;
+      color: white;
+    }
+
+    .section {
+      display: none;
+      background: white;
+      margin-top: 20px;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.06);
+      animation: fade .3s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section h2 {
+      color: #087f8c;
+      margin-bottom: 15px;
+    }
+
+    .service {
+      background: #eef9fa;
+      padding: 15px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #d4e2e5;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    form input:focus,
+    form select:focus,
+    form textarea:focus {
+      border-color: #087f8c;
+    }
+
+    form button {
+      width: 100%;
+      background: #087f8c;
+      color: white;
+    }
+
+    .close {
+      background: #e8f0f2;
+      color: #18343b;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .contact-card {
+      background: #eef9fa;
+      padding: 18px;
+      border-radius: 15px;
+      margin-bottom: 12px;
+    }
+
+    .contact-card a {
+      color: #087f8c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 -3px 15px rgba(0,0,0,.08);
+      font-size: 13px;
+    }
+
+    @media (max-width: 550px) {
+      .buttons {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header h1 {
+        font-size: 23px;
+      }
+
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="doctor-icon">🩺</div>
+  <h1>د. حمداد هشام</h1>
+  <p>طبيب عام</p>
+</header>
+
+<div class="container">
+
+  <div class="welcome">
+    <h2>مرحبًا بكم</h2>
+    <p>
+      مرحبًا بكم في تطبيق العيادة.
+      يمكنكم حجز موعد والتواصل مع الطبيب والاطلاع على الخدمات بسهولة.
+    </p>
+  </div>
+
+  <div class="buttons">
+
+    <button class="primary" onclick="showSection('appointment')">
+      <span class="icon">📅</span>
+      حجز موعد
+    </button>
+
+    <button onclick="showSection('services')">
+      <span class="icon">🩺</span>
+      الخدمات الطبية
+    </button>
+
+    <button onclick="showSection('doctor')">
+      <span class="icon">👨‍⚕️</span>
+      عن الطبيب
+    </button>
+
+    <button onclick="showSection('contact')">
+      <span class="icon">📞</span>
+      التواصل
+    </button>
+
+    <button onclick="openMap()">
+      <span class="icon">📍</span>
+      موقع العيادة
+    </button>
+
+    <button onclick="showSection('emergency')">
+      <span class="icon">🚨</span>
+      الطوارئ
+    </button>
+
+  </div>
+
+
+  <!-- حجز موعد -->
+  <section id="appointment" class="section">
+
+    <h2>📅 حجز موعد</h2>
+
+    <form onsubmit="bookAppointment(event)">
+
+      <input
+        id="patientName"
+        type="text"
+        placeholder="اسم المريض"
+        required
+      >
+
+      <input
+        id="phone"
+        type="tel"
+        placeholder="رقم الهاتف"
+        required
+      >
+
+      <input
+        id="date"
+        type="date"
+        required
+      >
+
+      <select id="time" required>
+        <option value="">اختر الساعة</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+      </select>
+
+      <textarea
+        id="reason"
+        rows="4"
+        placeholder="سبب الزيارة"
+      ></textarea>
+
+      <button type="submit">
+        تأكيد حجز الموعد
+      </button>
+
+    </form>
+
+    <button class="close" onclick="closeSections()">
+      إغلاق
+    </button>
+
+  </section>
+
+
+  <!-- الخدمات -->
+  <section id="services" class="section">
+
+    <h2>🩺 الخدمات الطبية</h2>
+
+    <div class="service">🩺 الفحص الطبي العام</div>
+    <div class="service">🌡️ متابعة الأمراض المزمنة</div>
+    <div class="service">💊 متابعة العلاج والأدوية</div>
+    <div class="service">🧪 توجيه للفحوصات والتحاليل</div>
+    <div class="service">❤️ متابعة ضغط الدم</div>
+    <div class="service">🩸 متابعة السكري</div>
+
+    <button class="close" onclick="closeSections()">
+      إغلاق
+    </button>
+
+  </section>
+
+
+  <!-- الطبيب -->
+  <section id="doctor" class="section">
+
+    <h2>👨‍⚕️ عن الطبيب</h2>
+
+    <p>
+      <strong>د. حمداد هشام</strong>
+    </p>
+
+    <br>
+
+    <p>
+      طبيب عام يقدم خدمات الفحص والاستشارة والمتابعة الطبية
+      للمرضى، مع الحرص على تقديم رعاية صحية مريحة ومنظمة.
+    </p>
+
+    <br>
+
+    <p>
+      يمكنك استخدام التطبيق لحجز موعد أو التواصل مع العيادة.
+    </p>
+
+    <button class="close" onclick="closeSections()">
+      إغلاق
+    </button>
+
+  </section>
+
+
+  <!-- التواصل -->
+  <section id="contact" class="section">
+
+    <h2>📞 التواصل</h2>
+
+    <div class="contact-card">
+      📱 الهاتف:
+      <a href="tel:+213000000000">
+        +213 000 000 000
+      </a>
+    </div>
+
+    <div class="contact-card">
+      💬 واتساب:
+      <a
+        href="https://wa.me/213000000000"
+        target="_blank"
+      >
+        إرسال رسالة
+      </a>
+    </div>
+
+    <div class="contact-card">
+      📧 البريد الإلكتروني:
+      <a href="mailto:doctor@example.com">
+        doctor@example.com
+      </a>
+    </div>
+
+    <button class="close" onclick="closeSections()">
+      إغلاق
+    </button>
+
+  </section>
+
+
+  <!-- الطوارئ -->
+  <section id="emergency" class="section">
+
+    <h2>🚨 الطوارئ</h2>
+
+    <p>
+      في حالة الطوارئ الطبية، يرجى الاتصال بخدمات الطوارئ
+      المحلية فورًا.
+    </p>
+
+    <br>
+
+    <button
+      class="primary"
+      onclick="callEmergency()"
+    >
+      📞 الاتصال بالطوارئ
+    </button>
+
+    <button class="close" onclick="closeSections()">
+      إغلاق
+    </button>
+
+  </section>
+
+</div>
+
+<footer>
+  © 2026 د. حمداد هشام — طبيب عام
+</footer>
+
+
+<script>
+
+  // إظهار القسم المطلوب
+  function showSection(id) {
+
+    closeSections();
+
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.classList.add("active");
+
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  }
+
+
+  // إغلاق الأقسام
+  function closeSections() {
+
+    document.querySelectorAll(".section").forEach(section => {
+      section.classList.remove("active");
+    });
+
+  }
+
+
+  // حجز الموعد
+  function bookAppointment(event) {
+
+    event.preventDefault();
+
+    const name =
+      document.getElementById("patientName").value;
+
+    const phone =
+      document.getElementById("phone").value;
+
+    const date =
+      document.getElementById("date").value;
+
+    const time =
+      document.getElementById("time").value;
+
+    const reason =
+      document.getElementById("reason").value;
+
+    if (!name || !phone || !date || !time) {
+      alert("يرجى ملء جميع المعلومات المطلوبة.");
+      return;
+    }
+
+    const message =
+      "طلب حجز موعد%0A%0A" +
+      "اسم المريض: " + encodeURIComponent(name) +
+      "%0Aالهاتف: " + encodeURIComponent(phone) +
+      "%0Aالتاريخ: " + encodeURIComponent(date) +
+      "%0Aالساعة: " + encodeURIComponent(time) +
+      "%0Aسبب الزيارة: " + encodeURIComponent(reason);
+
+    /*
+      غيّر الرقم التالي إلى رقم واتساب الطبيب
+      بصيغة دولية بدون علامة +
+    */
+
+    const doctorWhatsApp = "213000000000";
+
+    const whatsappURL =
+      "https://wa.me/" +
+      doctorWhatsApp +
+      "?text=" +
+      message;
+
+    window.open(whatsappURL, "_blank");
+
+  }
+
+
+  // فتح موقع العيادة
+  function openMap() {
+
+    /*
+      ضع هنا عنوان العيادة الحقيقي.
+      يمكن استبدال النص بعنوان العيادة.
+    */
+
+    const address =
+      "عيادة الدكتور حمداد هشام الجزائر";
+
+    const url =
+      "https://www.google.com/maps/search/?api=1&query=" +
+      encodeURIComponent(address);
+
+    window.open(url, "_blank");
+
+  }
+
+
+  // زر الطوارئ
+  function callEmergency() {
+
+    /*
+      غيّر الرقم حسب بلدك وخدمات الطوارئ المحلية.
+    */
+
+    window.location.href = "tel:14";
+
+  }
+
+</script>
+
+</body>
+</html>
